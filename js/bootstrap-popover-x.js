@@ -71,6 +71,9 @@
     // popover extended plugin
     PopoverX = function (element, options) {
         var self = this;
+        options.$target = ($(options.$target).attr('id'))?options.$target:$('#'+$(element).attr('id').substring(0, $(element).attr('id').length - 7) + 'targ');
+        self.$element = $(element).on('click.dismiss.popoverX', '[data-dismiss="popover-x"]', $.proxy(self.hide, self));
+        options.$target = ($(options.$target).attr('id'))?options.$target:$('#'+$(element).attr('id').substring(0, $(element).attr('id').length - 7) + 'targ');
         self.options = options;
         self.$element = $(element);
         self.$dialog = self.$element;
